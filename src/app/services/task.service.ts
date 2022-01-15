@@ -1,8 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { apiUrl } from '../helpers/consts';
 import { Task } from '../Task';
+
+const headerOptions = {
+  headers : new HttpHeaders({
+    'Content-Type': 'application/json'
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +24,9 @@ export class TaskService {
 
   deleteTask(taskId: number): Observable<void>{
     return this.http.delete<void>(`${this.tasksApiUrl}/${taskId}`);
+  }
+
+  putTask(task: Task): Observable<void>{
+    return this.http.put<void>(`${this.tasksApiUrl}/${task.id}`, task, headerOptions);
   }
 }
