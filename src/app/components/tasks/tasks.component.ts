@@ -12,7 +12,15 @@ export class TasksComponent implements OnInit {
 
   constructor(private taskService: TaskService) { }
 
-  ngOnInit(): void {
+  private fetchTasks(){
     this.taskService.getTasks().subscribe((tasks)=> this.tasks=tasks);
+  }
+
+  ngOnInit(): void {
+    this.fetchTasks();
+  }
+
+  onDeleteTask(taskId: number): void{
+    this.taskService.deleteTask(taskId).subscribe(()=>this.fetchTasks());
   }
 }

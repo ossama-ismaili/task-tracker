@@ -15,4 +15,8 @@ export class TaskService {
   getTasks(): Observable<Task[]>{
     return this.http.get<Task[]>(this.tasksApiUrl);
   }
+
+  deleteTask(taskId: number): Observable<void>{
+    return this.http.delete<void>(`${this.tasksApiUrl}/${taskId}`);
+  }
 }
