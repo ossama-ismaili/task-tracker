@@ -5,6 +5,18 @@
       "day": "2022-01-16T08:30",
       "reminder": true,
       "id": 1
+    },
+    {
+      "text": "Read manga",
+      "day": "2022-01-17T22:30",
+      "reminder": false,
+      "id": 2
+    },
+    {
+      "text": "Watch a movie",
+      "day": "2022-01-19T21:30",
+      "reminder": false,
+      "id": 3
     }
   ]
 }
