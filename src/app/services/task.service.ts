@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { apiUrl } from '../helpers/consts';
+import { PostTask } from '../PostTask';
 import { Task } from '../Task';
 
 const headerOptions = {
@@ -28,5 +29,9 @@ export class TaskService {
 
   putTask(task: Task): Observable<void>{
     return this.http.put<void>(`${this.tasksApiUrl}/${task.id}`, task, headerOptions);
+  }
+
+  postTask(task: PostTask): Observable<Task>{
+    return this.http.post<Task>(`${apiUrl}/tasks`, task, headerOptions);
   }
 }

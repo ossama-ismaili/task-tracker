@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostTask } from 'src/app/PostTask';
 import { TaskService } from 'src/app/services/task.service';
 import { Task } from '../../Task';
 
@@ -23,5 +24,9 @@ export class TasksComponent implements OnInit {
   onToggleTask(task: Task): void{
     task.reminder = !task.reminder;
     this.taskService.putTask(task).subscribe();
+  }
+
+  onAddTask(task: PostTask): void{
+    this.taskService.postTask(task).subscribe((addedTask)=>this.tasks.push(addedTask));
   }
 }

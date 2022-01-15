@@ -1,0 +1,17 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="text">Task</label>
+        <input type="text" [ngClass]="{'error-input': textValidation.error}" name="text" id="text" [(ngModel)]="text" placeholder="Add task" />
+        <div [ngClass]="textValidation.error ? 'error-message' : 'd-none'">{{textValidation.message}}</div>
+    </div>
+    <div class="form-control">
+        <label for="day">Day & time</label>
+        <input type="datetime-local" [ngClass]="{'error-input': dayValidation.error}" name="day" id="day" [(ngModel)]="day" placeholder="Add day & time" /> 
+        <div [ngClass]="dayValidation.error ? 'error-message' : 'd-none'">{{dayValidation.message}}</div>
+    </div>
+    <div class="form-control form-control-check">
+        <label for="reminder">Reminder</label>
+        <input type="checkbox" name="reminder" id="reminder" [(ngModel)]="reminder" />
+    </div>
+    <input type="submit" value="Save Task" class="btn btn-block" />
+</form>
