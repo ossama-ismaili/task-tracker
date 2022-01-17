@@ -1,13 +1,13 @@
-<form class="add-form" (ngSubmit)="onSubmit()">
+<form *ngIf="showAddTask" (ngSubmit)="onSubmit()">
     <div class="form-control">
         <label for="text">Task</label>
-        <input type="text" [ngClass]="{'error-input': textValidation.error}" name="text" id="text" [(ngModel)]="text" placeholder="Add task" />
-        <div [ngClass]="textValidation.error ? 'error-message' : 'd-none'">{{textValidation.message}}</div>
+        <input type="text" [ngClass]="{'error-input': textValidation.error}" name="text" id="text" [(ngModel)]="text" (change)="handleTextChange()" placeholder="Add task" />
+        <div *ngIf="textValidation.error" class="error-message">{{textValidation.message}}</div>
     </div>
     <div class="form-control">
         <label for="day">Day & time</label>
-        <input type="datetime-local" [ngClass]="{'error-input': dayValidation.error}" name="day" id="day" [(ngModel)]="day" placeholder="Add day & time" /> 
-        <div [ngClass]="dayValidation.error ? 'error-message' : 'd-none'">{{dayValidation.message}}</div>
+        <input type="datetime-local" [ngClass]="{'error-input': dayValidation.error}" name="day" id="day" [(ngModel)]="day" (change)="handleDayChange()" placeholder="Add day & time" /> 
+        <div *ngIf="dayValidation.error" class="error-message">{{dayValidation.message}}</div>
     </div>
     <div class="form-control form-control-check">
         <label for="reminder">Reminder</label>
